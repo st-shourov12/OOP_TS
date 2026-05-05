@@ -24,3 +24,18 @@ const cat = new Animal("Billu Mastan", "Cat", "Meaw meaw")
 
 dog.makeSound();
 
+
+class Developer {
+    
+    constructor(public name: string , public expertise: string, public hasWatch: boolean ){
+
+    }
+    about() {
+        console.log(`${this.name} expert in ${this.expertise}`);
+    }
+}
+
+const shourov = new Developer("Shourov", "Front-end" , false)
+
+shourov.about()
+
