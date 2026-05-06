@@ -322,7 +322,7 @@ const describeUser = (user: NormalUser | AdminUser): void => {
 
 ### My Practice
 ```typescript
-// typeGuard = type narrowing
+// typeof Guard = type narrowing
 
 type Alphaneumeric = number | string ;
 
@@ -341,6 +341,8 @@ console.log(add('5','9'));
 ```
 
 ```typescript
+
+// in guard
 type NormalUser = {
     name : string,
 }
@@ -930,7 +932,15 @@ tsc
 ```bash
 tsc --watch
 ```
+**Install ts-node for compiling properly:**
+```bash
+npm install -g ts-node
+```
 
+**Run a file directly (no compile step):**
+```bash
+ts-node src/file.ts
+```
 **Run a specific file directly (no compile step):**
 ```bash
 ts-node-dev --respawn --transpile-only src/module1/1.3-basic-types.ts
