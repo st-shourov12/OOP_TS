@@ -1,3 +1,8 @@
+// npm install -g typescript
+// tsc --init
+// tsc
+
+
 // npm install -g ts-node
 // ts-node ./src/class.ts
 
