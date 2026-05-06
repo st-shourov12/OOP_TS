@@ -1,3 +1,4 @@
+// npm install -g ts-node
 // ts-node ./src/typeGuard.ts
 
 // typeGuard = type narrowing

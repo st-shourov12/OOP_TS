@@ -1,3 +1,4 @@
+// npm install -g ts-node
 // ts-node ./src/inGuard.ts
 
 type NormalUser = {

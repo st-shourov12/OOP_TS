@@ -1,3 +1,6 @@
+// npm install -g ts-node
+// ts-node ./src/inheritance.ts
+
 class Parent {
     name : string ;
     age: number;

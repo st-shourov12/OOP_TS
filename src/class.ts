@@ -1,3 +1,6 @@
+// npm install -g ts-node
+// ts-node ./src/class.ts
+
 // Class 
 
 class Animal {
