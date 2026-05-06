@@ -1,5 +1,7 @@
 // ts-node ./src/typeGuard.ts
 
+// typeGuard = type narrowing
+
 type Alphaneumeric = number | string ;
 
 const add = (num1 : Alphaneumeric , num2:Alphaneumeric) => {
