@@ -884,44 +884,40 @@ p.age = 26;                 // ✅ uses setter
 # My Practice
 ```typescript
 
-class Animal {
-    name : string;
-    species : string ;
-    sound : string;
+class BankAccount {
+    public readonly userId : number;
+    public userName : string ;
+    protected userBalance : number ;
+
     constructor (
-        name : string,
-        species : string ,
-        sound : string,
+        userId : number,
+        userName : string ,
+        userBalance : number ,
     ) {
-        this.name = name
-        this.species = species
-        this.sound = sound
+        this.userId = userId ;
+        this.userName = userName ; 
+        this.userBalance = userBalance
     }
 
-    makeSound ( ) {
-        console.log(`${this.name} make sound: ${this.sound}`);
+    private addBalance(balance : number ){
+        this.userBalance = this.userBalance + balance;
+        return this.userBalance
     }
-}
-
-const dog = new Animal("Dogesh","Dog" , "Gheu Gheu");
-const cat = new Animal("Billu Mastan", "Cat", "Meaw meaw")
-
-dog.makeSound();
-
-
-class Developer {
-    
-    constructor(public name: string , public expertise: string, public hasWatch: boolean ){
-
-    }
-    about() {
-        console.log(`${this.name} expert in ${this.expertise}`);
+    callhiddenMethod(balance: number) {
+        return this.addBalance(balance)
     }
 }
 
-const shourov = new Developer("Shourov", "Front-end" , false)
+class StudentAccount extends BankAccount {
+    test(){
+        this.userBalance
+    }
+}
 
-shourov.about();
+const shourov = new BankAccount(123,"Shourov" , 500);
+// shourov.userId = 555
+console.log(shourov.callhiddenMethod(120));
+console.log(shourov);
 
 ```
 ---
