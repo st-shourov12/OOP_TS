@@ -9,8 +9,6 @@
 - [About This Repository](#about-this-repository)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
-- [Module 1: Basic Types of TypeScript](#module-1-basic-types-of-typescript)
-- [Module 2: Advanced Types of TypeScript](#module-2-advanced-types-of-typescript)
 - [Module 3: Object-Oriented Programming (OOP)](#module-3-object-oriented-programming-oop)
 - [Project Structure](#project-structure)
 - [How to Run the Code](#how-to-run-the-code)
@@ -1019,10 +1017,12 @@ Module 1 (Basics)          Module 2 (Advanced)        Module 3 (OOP)
 
 ## Resources
 
+- [Module 1: Basic Types of TypeScript](https://github.com/st-shourov12/typescript-technocrat)
+- [Module 2: Advanced Types of TypeScript](https://github.com/st-shourov12/advance-typescript)
 - [TypeScript Official Docs](https://www.typescriptlang.org/docs/)
 - [TypeScript Playground](https://www.typescriptlang.org/play)
 - [ts-node-dev](https://www.npmjs.com/package/ts-node-dev)
-- [Apollo Level 2 Web Development](https://github.com/Apollo-Level2-Web-Dev/be-a-typescript-technocrat)
+
 
 ---
 
