@@ -126,6 +126,7 @@ TypeScript fully supports Object-Oriented Programming with four core pillars:
 
 ### 3-1 · Class and Object
 
+# The Concept
 ```typescript
 class Animal {
   constructor(
@@ -145,11 +146,55 @@ const cat = new Animal("Persian", "cat", "Meow!");
 dog.makeSound(); // The German Shepherd says Woof!
 cat.makeSound(); // The Persian says Meow!
 ```
+# My Practice
+```typescript
+
+class Animal {
+    name : string;
+    species : string ;
+    sound : string;
+    constructor (
+        name : string,
+        species : string ,
+        sound : string,
+    ) {
+        this.name = name
+        this.species = species
+        this.sound = sound
+    }
+
+    makeSound ( ) {
+        console.log(`${this.name} make sound: ${this.sound}`);
+    }
+}
+
+const dog = new Animal("Dogesh","Dog" , "Gheu Gheu");
+const cat = new Animal("Billu Mastan", "Cat", "Meaw meaw")
+
+dog.makeSound();
+
+
+class Developer {
+    
+    constructor(public name: string , public expertise: string, public hasWatch: boolean ){
+
+    }
+    about() {
+        console.log(`${this.name} expert in ${this.expertise}`);
+    }
+}
+
+const shourov = new Developer("Shourov", "Front-end" , false)
+
+shourov.about();
+
+```
 
 ---
 
 ### 3-2 · Inheritance
 
+# The Concept
 ```typescript
 class Person {
   constructor(
@@ -420,7 +465,9 @@ car.move();        // Vehicle is moving
 
 Encapsulation means bundling state and behavior together and restricting direct access to internal data:
 
+# The Concept
 ```typescript
+
 class Person {
   private _name: string;
   private _age: number;
@@ -449,6 +496,49 @@ p.age = 26;                 // ✅ uses setter
 // p._age = -1;             // ❌ private — cannot access
 ```
 
+# My Practice
+```typescript
+
+class Animal {
+    name : string;
+    species : string ;
+    sound : string;
+    constructor (
+        name : string,
+        species : string ,
+        sound : string,
+    ) {
+        this.name = name
+        this.species = species
+        this.sound = sound
+    }
+
+    makeSound ( ) {
+        console.log(`${this.name} make sound: ${this.sound}`);
+    }
+}
+
+const dog = new Animal("Dogesh","Dog" , "Gheu Gheu");
+const cat = new Animal("Billu Mastan", "Cat", "Meaw meaw")
+
+dog.makeSound();
+
+
+class Developer {
+    
+    constructor(public name: string , public expertise: string, public hasWatch: boolean ){
+
+    }
+    about() {
+        console.log(`${this.name} expert in ${this.expertise}`);
+    }
+}
+
+const shourov = new Developer("Shourov", "Front-end" , false)
+
+shourov.about();
+
+```
 ---
 
 ## Project Structure
