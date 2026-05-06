@@ -654,11 +654,11 @@ console.log(Counter.increment());
 
 ---
 
-### 3-8 · Polymorphism
+## 3-8 · Polymorphism
 
 Polymorphism allows objects of different classes to be treated through a common interface, each responding differently:
 
-# The Concept
+### The Concept
 ```typescript
 class Shape {
   getArea(): number { return 0; }
@@ -683,7 +683,7 @@ printArea(new Circle(10));         // Area: 314.16
 printArea(new Rectangle(5, 8));    // Area: 40.00
 ```
 
-# My Practice 
+### My Practice 
 ```typescript
 class Person {
     getSleep() {
@@ -762,10 +762,11 @@ getArea(area2)
 
 ---
 
-### 3-9 · Abstraction
+## 3-9 · Abstraction
 
 Abstract classes define a *contract* — they can have some implementation, but subclasses **must** implement abstract methods:
 
+### The Concept
 ```typescript
 abstract class Vehicle {
   abstract startEngine(): void; // must be implemented by subclasses
@@ -792,6 +793,55 @@ car.startEngine(); // Car engine: Vroom!
 car.move();        // Vehicle is moving
 
 // const v = new Vehicle(); // ❌ Error — cannot instantiate abstract class
+```
+
+### My Practice
+```typescript
+// interface
+interface MediaPlayer {
+    play() :  void;
+    pause(): void;
+    stop(): void;
+}
+
+class MusicPlayer implements MediaPlayer {
+    play(): void {
+        console.log(`Playing Music...`);
+    }
+    pause(): void {
+        console.log(`Music Paused...`);
+    }
+    stop(): void {
+        console.log(`Music Stopped...`);
+    }
+}
+
+const disco = new MusicPlayer();
+disco.play();
+
+// abstract class
+
+abstract class Player {
+    abstract play() :  void;
+    abstract pause(): void;
+    abstract stop(): void;
+}
+
+class VideoPlayer extends Player {
+    play(): void {
+        console.log(`Playing Video...`);
+    }
+    pause(): void {
+        console.log(`Video Paused...`);
+    }
+    stop(): void {
+        console.log(`Video Stopped...`);
+    }
+}
+
+const shourovPlayer = new VideoPlayer();
+shourovPlayer.play()
+
 ```
 
 ---
