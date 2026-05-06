@@ -1,6 +1,6 @@
 # 🚀 Object Oriented Programming (OOP)
 
-> A comprehensive, hands-on TypeScript learning repository covering everything from basic types to advanced OOP patterns — structured as a progressive course with real code examples.
+> A comprehensive, hands-on TypeScript learning repository covering OOP patterns — structured as a progressive course with real code examples.
 
 ---
 
@@ -20,6 +20,8 @@
 ## About This Repository
 
 This repository is a structured journey through TypeScript, from your very first `hello world` program to advanced OOP concepts like polymorphism, abstraction, and design patterns. Each topic is organized into modules with focused source files so you can learn one concept at a time.
+
+
 
 ---
 
@@ -124,9 +126,9 @@ TypeScript fully supports Object-Oriented Programming with four core pillars:
 
 ---
 
-### 3-1 · Class and Object
+## 3-1 · Class and Object
 
-# The Concept
+### The Concept
 ```typescript
 class Animal {
   constructor(
@@ -146,7 +148,7 @@ const cat = new Animal("Persian", "cat", "Meow!");
 dog.makeSound(); // The German Shepherd says Woof!
 cat.makeSound(); // The Persian says Meow!
 ```
-# My Practice
+### My Practice
 ```typescript
 
 class Animal {
@@ -192,9 +194,9 @@ shourov.about();
 
 ---
 
-### 3-2 · Inheritance
+## 3-2 · Inheritance
 
-# The Concept
+### The Concept
 ```typescript
 class Person {
   constructor(
@@ -240,12 +242,60 @@ teacher.getSleep(6);
 teacher.takeClass(3);
 ```
 
+### My Practice 
+
+```typescript
+class Parent {
+    name : string ;
+    age: number;
+    address : string;
+
+    constructor(
+        name : string ,
+        age: number,
+        address : string,
+    ){
+        this.name = name;
+        this.age =age ;
+        this.address = address
+    }
+
+    getSleep (numOfHour: number) {
+      console.log(`${this.name} ${numOfHour} gonta gumay`);
+    }
+}
+
+
+
+class Student extends Parent {}
+
+const shourov = new Student("Shourov", 23, "Mirpur");
+
+shourov.getSleep(9)
+
+class Teacher extends Parent {
+   
+    constructor ( name : string ,  age : number , address : string, public designation : string, ){
+        super( name, age, address)
+    }
+
+    takeClass (numOfHour: number) {
+        console.log(`${this.name} ${numOfHour} gonta class ney`);
+    }
+
+}
+
+const teacher = new Teacher('Abul' , 45, 'Andarkilla', 'Assistant teacher')
+teacher.takeClass(5)
+```
+
 ---
 
-### 3-3 · Type Guards — `typeof` and `in`
+## 3-3 · Type Guards — `typeof` and `in`
 
 Type guards help TypeScript narrow down a union type at runtime:
 
+### The Concept 
 ```typescript
 // typeof guard
 type Alphanumeric = string | number;
@@ -270,10 +320,56 @@ const describeUser = (user: NormalUser | AdminUser): void => {
 };
 ```
 
+### My Practice
+```typescript
+// typeGuard = type narrowing
+
+type Alphaneumeric = number | string ;
+
+const add = (num1 : Alphaneumeric , num2:Alphaneumeric) => {
+    if (typeof num1 === "number" && typeof num2 === "number") {
+        return num1 + num2
+    }else {
+       return num1.toString()  + num2.toString()
+    }
+}
+
+console.log(add(5,9));
+console.log(add(5,'9'));
+console.log(add('5','9'));
+
+```
+
+```typescript
+type NormalUser = {
+    name : string,
+}
+
+type AdminUser = {
+    name : string ,
+    role : 'Admin'
+} 
+
+const getUserInfo = (user : NormalUser | AdminUser) => {
+
+    if ("role" in user) {
+        console.log(`This is ${user?.name} and role is ${user?.role}`);
+    }
+    else{
+
+        console.log(`This is ${user?.name} and role is normal`);
+    }
+}
+
+getUserInfo({name : "Shourov" , role : "Admin"})
+
+```
+
 ---
 
-### 3-4 · Type Guards — `instanceof`
+## 3-4 · Type Guards — `instanceof`
 
+### The Concept
 ```typescript
 class Dog extends Animal {
   makeBark(): void { console.log("Woof!"); }
@@ -298,9 +394,65 @@ const interact = (animal: Animal): void => {
 };
 ```
 
+### My Practice
+```typescript
+class Person {
+    name : string ;
+    constructor (name: string) {
+        this.name = name
+    }
+    getSleep(num : number){
+        console.log(`${this.name} sleep ${num} hours daily`);
+    }
+}
+
+class Student extends Person {
+    constructor(name : string){
+        super(name)
+    }
+    doStudy(num : number){
+        console.log(`${this.name} read ${num} hours daily`);
+    }
+}
+
+
+
+
+class Teacher extends Person {
+    takeClass(numOfHour : number) {
+        console.log(`${this.name} take class ${numOfHour} hours daily`);
+    }
+}
+
+
+const isTeacher = (user: Person) => {
+    return user instanceof Teacher
+}
+
+const getUserInfo = (user : Person) =>{
+    // normal practice
+    if (user instanceof Student) {
+        user.doStudy(4)
+    }
+    // best practice
+    else if (isTeacher(user)) {
+        user.takeClass(6)
+    }else{
+        user.getSleep(9)
+    }
+}
+
+const student1 = new Student("Shourov");
+const teacher1 = new Teacher('Abul');
+const user1 = new Person('Mokbul');
+getUserInfo(teacher1)
+getUserInfo(user1)
+
+```
+
 ---
 
-### 3-5 · Access Modifiers
+## 3-5 · Access Modifiers
 
 TypeScript provides three access modifiers to control visibility:
 
@@ -311,6 +463,7 @@ TypeScript provides three access modifiers to control visibility:
 | `protected` | Inside the class and subclasses |
 | `readonly` | Readable everywhere, writable only in constructor |
 
+### The Concept
 ```typescript
 class BankAccount {
   public readonly id: number;
@@ -338,12 +491,49 @@ console.log(account.getBalance()); // 700
 // account._balance = 0; // ❌ Error — private!
 ```
 
+### My Practice
+```typescript
+class BankAccount {
+    public readonly userId : number;
+    public userName : string ;
+    protected userBalance : number ;
+
+    constructor (
+        userId : number,
+        userName : string ,
+        userBalance : number ,
+    ) {
+        this.userId = userId ;
+        this.userName = userName ; 
+        this.userBalance = userBalance
+    }
+
+    addBalance(balance : number ){
+        this.userBalance = this.userBalance + balance;
+        return this.userBalance
+    }
+}
+
+class StudentAccount extends BankAccount {
+    test(){
+        this.userBalance
+    }
+}
+
+const shourov = new BankAccount(123,"Shourov" , 500);
+// shourov.userId = 555
+console.log(shourov.addBalance(120));
+console.log(shourov);
+
+```
+
 ---
 
-### 3-6 · Getters and Setters
+## 3-6 · Getters and Setters
 
 Use `get` and `set` to control access to private fields like a property, not a method call:
 
+### The Concept
 ```typescript
 class BankAccount {
   protected _balance: number;
@@ -367,13 +557,60 @@ const account = new BankAccount(1, "Alice", 100);
 account.deposit = 50;             // calls the setter
 console.log(account.balance);    // 150 — calls the getter
 ```
+### My Practice
+```typescript
+// getter 
+class BankAccount {
+    public readonly userId : number;
+    public userName : string ;
+    protected userBalance : number ;
+
+    constructor (
+        userId : number,
+        userName : string ,
+        userBalance : number ,
+    ) {
+        this.userId = userId ;
+        this.userName = userName ; 
+        this.userBalance = userBalance
+    }
+    // set ballance
+    // addBalance(balance : number ){
+    //     this.userBalance = this.userBalance + balance;
+    //     return this.userBalance
+    // }
+
+    set addBalance(amount : number){
+        this.userBalance = this.userBalance + amount
+    }
+
+    // get balance
+    // getBalance(){
+    //     console.log(this.userBalance); 
+    // }
+     get getBalance (){
+        return this.userBalance
+     }
+
+}
+
+const user1 = new BankAccount(125, 'Show' ,1500);
+// user1.addBalance(500);
+// user1.getBalance()
+
+user1.addBalance = 500;
+console.log(user1);
+
+```
 
 ---
 
-### 3-7 · Static Members
+## 3-7 · Static Members
 
 Static properties and methods belong to the *class itself*, not to any instance:
 
+
+### The Concept
 ```typescript
 class Counter {
   static count: number = 0; // shared across ALL instances
@@ -391,6 +628,26 @@ console.log(Counter.increment()); // 1
 console.log(Counter.increment()); // 2
 console.log(Counter.decrement()); // 1
 // No need to create an instance — call directly on the class
+```
+
+### My Practice
+```typescript
+class Counter {
+    static count: number = 0;
+    static increment() {
+        return (Counter.count = Counter.count + 1 )
+    }
+    decrement() {
+        return (Counter.count = Counter.count - 1 )
+    }
+}
+
+console.log(Counter.increment());
+console.log(Counter.increment());
+console.log(Counter.increment());
+console.log(Counter.increment());
+console.log(Counter.increment());
+
 ```
 
 ---
